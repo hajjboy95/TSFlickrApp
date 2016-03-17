@@ -12,12 +12,15 @@ class FlickrTableViewController: UIViewController {
 
     
     var flickrTableDataSource = [Flickr]()
+    var flickrFactory = FlickrFactory(numberOfFlickrObjects: 30)
+    let fapi = FlickrApi()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        flickrTableDataSource =  flickrFactory.createFlickrInstaces()
         
 
-        let fapi = FlickrApi()
         fapi.getFlickrData { (dic, error) -> Void in
             
             if error != nil {
@@ -41,15 +44,18 @@ class FlickrTableViewController: UIViewController {
 extension FlickrTableViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return flickrTableDataSource.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("FlickrCell") as UITableViewCell!
+        let cellInfo = flickrTableDataSource[indexPath.row]
         
         
-        cell.textLabel?.text = "HELLO"
+        cell.textLabel?.text = "\(indexPath.row) \(cellInfo.title!)"
+        cell.detailTextLabel?.text = "\(cellInfo.desription!)"
+        cell.imageView?.image = UIImage(named: "placeholder")
         
         return cell
     }

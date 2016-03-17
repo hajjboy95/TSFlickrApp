@@ -78,9 +78,31 @@ extension FlickrTableViewController : UITableViewDataSource {
         
         cell.textLabel?.text = "\(indexPath.row) \(title!)"
         cell.detailTextLabel?.text = "\(desc!)"
+        cell.imageView?.clipsToBounds = true
         
-//        Check if the image is already present in the cache
-        
+            // check if the image is already present in the cache
+        if let img = cache.objectForKey(date_taken!) {
+            print("image present in cache")
+            cell.imageView?.image = img as? UIImage
+        }
+            
+            // set placeholder image , make network request then set image
+        else {
+            cell.imageView?.image = UIImage(named: "placeholder")
+            
+            fapi.downloadFlickrImage(media! , completion: {  (image, error) -> Void in
+                
+                print("media! = \(media!)")
+                if error != nil {
+                    print(error)
+                } else {
+                    cell.imageView?.image = image
+                    self.cache.setObject(image!, forKey: date_taken!)
+                }
+            })
+            
+        }
+
         
         
         return cell
@@ -94,11 +116,4 @@ extension FlickrTableViewController : UITableViewDataSource {
 
 
 
-//if let img = cache.objectForKey(date_taken!) {
-//    cell.imageView?.image = img as! UIImage
-//}
-//    //        set placeholder image , make netwrok request
-//else {
-//
-//}
 

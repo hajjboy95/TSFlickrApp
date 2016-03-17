@@ -68,9 +68,11 @@ struct Flickr {
             let tags: String = "macro chili belgium belgique cayenne macrophotography wallonie gardenning wallonia pepperflower rebecq d7100 tamronsp90mmf28vcusd emilekympers"
             let title:String = "Red hot"
             
-            let flickrObject = Flickr(author: author, author_id: author_id, date_taken: date_taken, desription: desription, link: link, media: media, published: published, tags: tags, title: title)
             
-            for _ in 0..<numberOfObjects {
+            for i in 0..<numberOfObjects {
+//                The cache takes the data uploadede as a key and an image as a value so this makes it that all the keys will be different so all the images will need to fetched one by one then will be stored in the cache
+                let flickrObject = Flickr(author: author, author_id: author_id, date_taken: date_taken + "\(i)", desription: desription, link: link, media: media, published: published, tags: tags, title: title)
+
                 flickrObjects.append(flickrObject)
             }
             

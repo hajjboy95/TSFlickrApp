@@ -10,6 +10,8 @@ import Foundation
 
 
 
+typealias flickrResult = (dic:NSDictionary?, error:NSError? ) -> Void
+
 class FlickrApi {
     
     var session: NSURLSession!
@@ -23,18 +25,16 @@ class FlickrApi {
     }
     
     
-    func getFlickrData(completion:(dic:NSDictionary?, error:NSError? ) -> Void ) {
-        
+    
+    func getFlickrData(completion: flickrResult ) {
+
+        // Json retured from this is sometimes valid and othertimes invalid
         let url = NSURL(string: "http://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1")!
         
         print("url = \(url)")
         task = session.downloadTaskWithURL(url, completionHandler: { (location:NSURL?, response:NSURLResponse?, error:NSError?) -> Void in
             
-            
-            
-            print("location = \(location)")
 
-            
             if let location = location {
                 let data = NSData(contentsOfURL: location)
                 
@@ -42,16 +42,14 @@ class FlickrApi {
                 do {
                     let dic = try NSJSONSerialization.JSONObjectWithData(data!, options: [.AllowFragments]) as? NSDictionary
                     let items = dic!["items"] as? NSDictionary
+                    print(items)
                     completion(dic: items , error: nil)
         
                     
                 } catch  let error as NSError {
-//                    print("error \(error)")
                     completion(dic: nil, error: error)
                     
                 }
-                
-                
             }
             else {
                 completion(dic: nil, error: nil)

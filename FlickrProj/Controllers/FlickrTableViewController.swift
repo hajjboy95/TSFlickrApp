@@ -8,8 +8,10 @@
 
 import UIKit
 
-class FlickrTableViewController: UITableViewController {
+class FlickrTableViewController: UIViewController {
 
+    
+    var flickrTableDataSource = [Flickr]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +23,7 @@ class FlickrTableViewController: UITableViewController {
             if error != nil {
                 print("ERROR HAS OCCURED \(error)")
             } else {
-                
+            
                 print(dic)
             }
             
@@ -35,4 +37,5 @@ class FlickrTableViewController: UITableViewController {
 
 
 }
+
 

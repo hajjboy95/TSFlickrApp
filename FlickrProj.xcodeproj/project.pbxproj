@@ -14,7 +14,7 @@
 		EC12F2CB1C9AE4E40049028B /* FlickrProjTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC12F2CA1C9AE4E40049028B /* FlickrProjTests.swift */; };
 		EC12F2D61C9AE4E40049028B /* FlickrProjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC12F2D51C9AE4E40049028B /* FlickrProjUITests.swift */; };
 		EC12F2E71C9AE53D0049028B /* FlickrApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC12F2E61C9AE53D0049028B /* FlickrApi.swift */; };
-		EC12F2EA1C9AE55C0049028B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC12F2E91C9AE55C0049028B /* ViewController.swift */; };
+		EC12F2EA1C9AE55C0049028B /* FlickrTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC12F2E91C9AE55C0049028B /* FlickrTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 		EC12F2D51C9AE4E40049028B /* FlickrProjUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrProjUITests.swift; sourceTree = "<group>"; };
 		EC12F2D71C9AE4E40049028B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC12F2E61C9AE53D0049028B /* FlickrApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrApi.swift; sourceTree = "<group>"; };
-		EC12F2E91C9AE55C0049028B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EC12F2E91C9AE55C0049028B /* FlickrTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +139,7 @@
 		EC12F2E81C9AE55C0049028B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EC12F2E91C9AE55C0049028B /* ViewController.swift */,
+				EC12F2E91C9AE55C0049028B /* FlickrTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC12F2EA1C9AE55C0049028B /* ViewController.swift in Sources */,
+				EC12F2EA1C9AE55C0049028B /* FlickrTableViewController.swift in Sources */,
 				EC12F2B61C9AE4E40049028B /* AppDelegate.swift in Sources */,
 				EC12F2E71C9AE53D0049028B /* FlickrApi.swift in Sources */,
 			);

@@ -39,3 +39,12 @@ class FlickrTableViewController: UIViewController {
 }
 
 
+
+//if let img = cache.objectForKey(date_taken!) {
+//    cell.imageView?.image = img as! UIImage
+//}
+//    //        set placeholder image , make netwrok request
+//else {
+//
+//}
+

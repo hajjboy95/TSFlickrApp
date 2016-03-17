@@ -7,10 +7,12 @@
 //
 
 import Foundation
-
+import UIKit
 
 
 typealias flickrResult = (dic:NSDictionary?, error:NSError? ) -> Void
+typealias flickrImg = (image: UIImage? , error:NSError?) -> Void
+
 
 class FlickrApi {
     
@@ -56,6 +58,12 @@ class FlickrApi {
             }
         })
         task.resume()
+    }
+    
+    
+    
+    func downloadFlickrImage(completion:flickrImg){
+        
     }
     
     

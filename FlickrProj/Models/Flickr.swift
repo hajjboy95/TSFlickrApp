@@ -46,9 +46,10 @@ struct Flickr {
 //    "tags":
 //    "macro chili belgium belgique cayenne macrophotography wallonie gardenning wallonia pepperflower rebecq d7100 tamronsp90mmf28vcusd emilekympers",
 //    "title":
-//    "Red hot"
-//}
-    
+//    "Red 
+
+
+
     class FlickrFactory {
         
         var numberOfObjects:Int!
@@ -70,7 +71,8 @@ struct Flickr {
             
             
             for i in 0..<numberOfObjects {
-//                The cache takes the data uploadede as a key and an image as a value so this makes it that all the keys will be different so all the images will need to fetched one by one then will be stored in the cache
+//                The cache takes the data_taken var  as a key and an image as a value so I append the counter i to the data_taken var 
+//                So that all the date_taken vars are different . This allows the cache key to different for each entry
                 let flickrObject = Flickr(author: author, author_id: author_id, date_taken: date_taken + "\(i)", desription: desription, link: link, media: media, published: published, tags: tags, title: title)
 
                 flickrObjects.append(flickrObject)

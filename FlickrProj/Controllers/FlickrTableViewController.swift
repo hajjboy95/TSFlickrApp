@@ -92,18 +92,4 @@ extension FlickrTableViewController : UITableViewDataSource {
     
 }
 
-//typealias flickrImg = (image: UIImage? , error:NSError?) -> Void
-//
-//
-//func downloadFlickrImage(completion:flickrImg){
-//    
-//}
-//if let img = cache.objectForKey(date_taken!) {
-//    cell.imageView?.image = img as! UIImage
-//}
-//    //        set placeholder image , make netwrok request
-//else {
-//    
-//}
-
 

@@ -12,7 +12,20 @@ class FlickrTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        
+
+        let fapi = FlickrApi()
+        fapi.getFlickrData { (dic, error) -> Void in
+            
+            if error != nil {
+                print("ERROR HAS OCCURED \(error)")
+            } else {
+                
+                print(dic)
+            }
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

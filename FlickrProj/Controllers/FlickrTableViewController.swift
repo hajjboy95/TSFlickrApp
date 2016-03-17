@@ -38,4 +38,28 @@ class FlickrTableViewController: UIViewController {
 
 }
 
+extension FlickrTableViewController : UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("FlickrCell") as UITableViewCell!
+        
+        
+        cell.textLabel?.text = "HELLO"
+        
+        return cell
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+}
+
+
+
 

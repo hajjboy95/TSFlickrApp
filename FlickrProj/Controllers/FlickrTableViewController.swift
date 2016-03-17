@@ -10,13 +10,19 @@ import UIKit
 
 class FlickrTableViewController: UIViewController {
 
-    
-    var flickrTableDataSource = [Flickr]()
-    var flickrFactory = FlickrFactory(numberOfFlickrObjects: 30)
-    let fapi = FlickrApi()
 
+
+    var flickrTableDataSource :[Flickr]!
+    var flickrFactory:FlickrFactory!
+    var fapi:FlickrApi!
+    var cache:NSCache!
+    var task: NSURLSessionDownloadTask!
+    var session: NSURLSession!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        intialiseObjects()
 
         flickrTableDataSource =  flickrFactory.createFlickrInstaces()
         
@@ -31,6 +37,18 @@ class FlickrTableViewController: UIViewController {
             }
             
         }
+    }
+    
+    private func intialiseObjects(){
+        
+        flickrTableDataSource = [Flickr]()
+        flickrFactory = FlickrFactory(numberOfFlickrObjects: 30)
+        fapi = FlickrApi()
+        cache = NSCache()
+        session = NSURLSession.sharedSession()
+        task = NSURLSessionDownloadTask()
+
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,10 +70,18 @@ extension FlickrTableViewController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("FlickrCell") as UITableViewCell!
         let cellInfo = flickrTableDataSource[indexPath.row]
         
+        let title = cellInfo.title
+        let desc  = cellInfo.desription
+        let media = cellInfo.media
+        let date_taken = cellInfo.date_taken
         
-        cell.textLabel?.text = "\(indexPath.row) \(cellInfo.title!)"
-        cell.detailTextLabel?.text = "\(cellInfo.desription!)"
-        cell.imageView?.image = UIImage(named: "placeholder")
+        
+        cell.textLabel?.text = "\(indexPath.row) \(title!)"
+        cell.detailTextLabel?.text = "\(desc!)"
+        
+//        Check if the image is already present in the cache
+        
+        
         
         return cell
     }
@@ -66,6 +92,18 @@ extension FlickrTableViewController : UITableViewDataSource {
     
 }
 
-
+//typealias flickrImg = (image: UIImage? , error:NSError?) -> Void
+//
+//
+//func downloadFlickrImage(completion:flickrImg){
+//    
+//}
+//if let img = cache.objectForKey(date_taken!) {
+//    cell.imageView?.image = img as! UIImage
+//}
+//    //        set placeholder image , make netwrok request
+//else {
+//    
+//}
 
 

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 
 typealias flickrResult = (dic:NSDictionary?, error:NSError? ) -> Void

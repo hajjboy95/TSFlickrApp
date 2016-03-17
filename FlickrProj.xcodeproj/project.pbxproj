@@ -15,6 +15,7 @@
 		EC12F2D61C9AE4E40049028B /* FlickrProjUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC12F2D51C9AE4E40049028B /* FlickrProjUITests.swift */; };
 		EC12F2E71C9AE53D0049028B /* FlickrApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC12F2E61C9AE53D0049028B /* FlickrApi.swift */; };
 		EC12F2EA1C9AE55C0049028B /* FlickrTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC12F2E91C9AE55C0049028B /* FlickrTableViewController.swift */; };
+		ECA3280B1C9B480300459F42 /* FlickrMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3280A1C9B480300459F42 /* FlickrMainCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		EC12F2D71C9AE4E40049028B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC12F2E61C9AE53D0049028B /* FlickrApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrApi.swift; sourceTree = "<group>"; };
 		EC12F2E91C9AE55C0049028B /* FlickrTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrTableViewController.swift; sourceTree = "<group>"; };
+		ECA3280A1C9B480300459F42 /* FlickrMainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrMainCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		EC12F2B41C9AE4E40049028B /* FlickrProj */ = {
 			isa = PBXGroup;
 			children = (
+				ECA328091C9B47E700459F42 /* Views */,
 				EC12F2E81C9AE55C0049028B /* Controllers */,
 				EC12F2E51C9AE53D0049028B /* FlickrApi */,
 				EC12F2B51C9AE4E40049028B /* AppDelegate.swift */,
@@ -142,6 +145,14 @@
 				EC12F2E91C9AE55C0049028B /* FlickrTableViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		ECA328091C9B47E700459F42 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ECA3280A1C9B480300459F42 /* FlickrMainCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +289,7 @@
 				EC12F2EA1C9AE55C0049028B /* FlickrTableViewController.swift in Sources */,
 				EC12F2B61C9AE4E40049028B /* AppDelegate.swift in Sources */,
 				EC12F2E71C9AE53D0049028B /* FlickrApi.swift in Sources */,
+				ECA3280B1C9B480300459F42 /* FlickrMainCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +514,7 @@
 				EC12F2DC1C9AE4E40049028B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EC12F2DD1C9AE4E40049028B /* Build configuration list for PBXNativeTarget "FlickrProjTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +523,7 @@
 				EC12F2DF1C9AE4E40049028B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EC12F2E01C9AE4E40049028B /* Build configuration list for PBXNativeTarget "FlickrProjUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +532,7 @@
 				EC12F2E21C9AE4E40049028B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

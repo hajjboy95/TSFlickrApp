@@ -11,7 +11,7 @@ import UIKit
 
 
 typealias flickrResult = (dic:NSDictionary?, error:NSError? ) -> Void
-typealias flickrImg = (image: UIImage? , error:NSError?) -> Void
+typealias flickrImgResult = (image: UIImage? , error:NSError?) -> Void
 
 
 class FlickrApi {
@@ -62,7 +62,7 @@ class FlickrApi {
     
     
     
-    func downloadFlickrImage(media:String , completion:flickrImg){
+    func downloadFlickrImage(media:String , completion:flickrImgResult){
         
         let url = NSURL(string:media)
         task = session.downloadTaskWithURL(url!, completionHandler: { (media:NSURL?, response:NSURLResponse?, error:NSError?) -> Void in

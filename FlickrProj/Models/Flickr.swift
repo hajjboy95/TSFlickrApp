@@ -20,7 +20,8 @@ struct Flickr {
     var published:String?
     var tags: String?
     var title:String?
-    }
+    
+}
     
   
     

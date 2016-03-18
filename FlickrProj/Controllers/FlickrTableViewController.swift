@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FlickrTableViewController: UIViewController {
+class FlickrTableViewController: UIViewController , UITableViewDelegate{
 
 
 
@@ -18,9 +18,16 @@ class FlickrTableViewController: UIViewController {
     var cache:NSCache!
     var task: NSURLSessionDownloadTask!
     var session: NSURLSession!
+    @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+        
+//        self.tableView.rowHeight = UITableViewAutomaticDimension;
+//        self.tableView.estimatedRowHeight = 200.0; // set to whatever your "average" cell height is
+
         
         intialiseObjects()
 
@@ -67,28 +74,31 @@ extension FlickrTableViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("FlickrCell") as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier("FlickrCell") as! FlickrTableViewCell
         let cellInfo = flickrTableDataSource[indexPath.row]
         
-        let title = cellInfo.title
-        let desc  = cellInfo.desription
-        let media = cellInfo.media
+        cell.cellInfo = cellInfo
+    
         let date_taken = cellInfo.date_taken
-        
-        
-        cell.textLabel?.text = "\(indexPath.row) \(title!)"
-        cell.detailTextLabel?.text = "\(desc!)"
-        cell.imageView?.clipsToBounds = true
+        let media = cellInfo.media
+
+//        
+//        let title = cellInfo.title
+//        let desc  = cellInfo.desription
+//
+//        
+//        cell.descriptionLabel?.text = "\(desc!)"
+//        cell.timeTakenLabel?.text = date_taken
         
             // check if the image is already present in the cache
         if let img = cache.objectForKey(date_taken!) {
             print("image present in cache")
-            cell.imageView?.image = img as? UIImage
+            cell.mainImageView?.image = img as? UIImage
         }
             
             // set placeholder image , make network request then set image
         else {
-            cell.imageView?.image = UIImage(named: "placeholder")
+            cell.mainImageView?.image = UIImage(named: "placeholder")
             
             fapi.downloadFlickrImage(media! , completion: {  (image, error) -> Void in
                 
@@ -96,7 +106,8 @@ extension FlickrTableViewController : UITableViewDataSource {
                 if error != nil {
                     print(error)
                 } else {
-                    cell.imageView?.image = image
+                    var updateCell  = tableView.cellForRowAtIndexPath(indexPath) as? FlickrTableViewCell
+                    updateCell?.mainImageView?.image = image
                     self.cache.setObject(image!, forKey: date_taken!)
                 }
             })

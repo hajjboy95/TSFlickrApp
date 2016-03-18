@@ -72,7 +72,6 @@ class FlickrApi {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
                     let img = UIImage(data: data)
-                    print(img)
                     completion(image: img, error: error)
                     
                 })

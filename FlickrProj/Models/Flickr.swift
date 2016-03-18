@@ -34,7 +34,7 @@ struct Flickr {
 //    "76618489@N03",
 //    "date_taken":
 //    "2015-11-04T13:50:14-08:00",
-//    "description": " <p><a href=\"https://www.flickr.com/people/emilekympers/\">Emile Kympers<\/a> posted a photo:<\/p> <p><a href=\"https://www.flickr.com/photos/emilekympers/22180553493/\" title=\"Red hot\"><img src=\"https://farm6.staticflickr.com/5659/22180553493_53acc2ac02_m.jpg\" width=\"160\" height=\"240\" alt=\"Red hot\" /><\/a><\/p> ",
+//    "description": " Extemely Hot Chillies , Only The Brave! ",
 //    "link":
 //    "https://www.flickr.com/photos/emilekympers/22180553493/",
 //    "media":
@@ -63,7 +63,7 @@ struct Flickr {
             let author:String =     "nobody@flickr.com (Emile Kympers)"
             let author_id:String =     "76618489@N03"
             let date_taken:String = "2015-11-04T13:50:14-08:00"
-            let desription:String = "Test description"
+            let desription:String = "Extemely Hot Chillies , Only The Brave!"
             let link:String = "https://www.flickr.com/photos/emilekympers/22180553493/"
             let media:String = "https://farm6.staticflickr.com/5659/22180553493_53acc2ac02_m.jpg"
             let published:String = "2015-11-05T12:22:12Z"

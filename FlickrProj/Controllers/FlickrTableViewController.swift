@@ -82,17 +82,8 @@ extension FlickrTableViewController : UITableViewDataSource {
         let date_taken = cellInfo.date_taken
         let media = cellInfo.media
 
-//        
-//        let title = cellInfo.title
-//        let desc  = cellInfo.desription
-//
-//        
-//        cell.descriptionLabel?.text = "\(desc!)"
-//        cell.timeTakenLabel?.text = date_taken
-        
             // check if the image is already present in the cache
         if let img = cache.objectForKey(date_taken!) {
-            print("image present in cache")
             cell.mainImageView?.image = img as? UIImage
         }
             
@@ -106,7 +97,7 @@ extension FlickrTableViewController : UITableViewDataSource {
                 if error != nil {
                     print(error)
                 } else {
-                    var updateCell  = tableView.cellForRowAtIndexPath(indexPath) as? FlickrTableViewCell
+                    let updateCell  = tableView.cellForRowAtIndexPath(indexPath) as? FlickrTableViewCell
                     updateCell?.mainImageView?.image = image
                     self.cache.setObject(image!, forKey: date_taken!)
                 }

@@ -14,7 +14,7 @@ class FlickrTableViewController: UIViewController {
 
     var flickrTableDataSource :[Flickr]!
     var flickrFactory:FlickrFactory!
-    var fapi:FlickrApi!
+    var flickrApi:FlickrApi!
     var cache:NSCache!
     var task: NSURLSessionDownloadTask!
     var session: NSURLSession!
@@ -34,7 +34,7 @@ class FlickrTableViewController: UIViewController {
         flickrTableDataSource =  flickrFactory.createFlickrInstaces()
         
 
-        fapi.getFlickrData { (dic, error) -> Void in
+        flickrApi.getFlickrData { (dic, error) -> Void in
             
             if error != nil {
                 print("ERROR HAS OCCURED \(error)")
@@ -50,7 +50,7 @@ class FlickrTableViewController: UIViewController {
         
         flickrTableDataSource = [Flickr]()
         flickrFactory = FlickrFactory(numberOfFlickrObjects: 30)
-        fapi = FlickrApi()
+        flickrApi = FlickrApi()
         cache = NSCache()
         session = NSURLSession.sharedSession()
         task = NSURLSessionDownloadTask()
@@ -91,7 +91,7 @@ extension FlickrTableViewController : UITableViewDataSource {
         else {
             cell.mainImageView?.image = UIImage(named: "placeholder")
             
-            fapi.downloadFlickrImage(media! , completion: {  (image, error) -> Void in
+            flickrApi.downloadFlickrImage(media! , completion: {  (image, error) -> Void in
                 
                 print("media! = \(media!)")
                 if error != nil {

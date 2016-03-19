@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FlickrTableViewController: UIViewController , UITableViewDelegate{
+class FlickrTableViewController: UIViewController {
 
 
 

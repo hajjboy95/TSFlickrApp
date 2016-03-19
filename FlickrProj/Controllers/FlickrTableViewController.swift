@@ -25,8 +25,8 @@ class FlickrTableViewController: UIViewController {
         
        
         
-//        self.tableView.rowHeight = UITableViewAutomaticDimension;
-//        self.tableView.estimatedRowHeight = 200.0; // set to whatever your "average" cell height is
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.estimatedRowHeight = 200.0; // set to whatever your "average" cell height is
 
         
         intialiseObjects()
@@ -63,6 +63,32 @@ class FlickrTableViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("HELLO")
+        switch segue.identifier ?? "" {
+        case Constants.FlickrTableViewToDetailViewSegue:
+            
+            let detailVC  = segue.destinationViewController as! DetailViewController
+            let indexPath = tableView.indexPathForSelectedRow
+            
+            let info = flickrTableDataSource[indexPath!.row]
+            let image = cache.objectForKey(info.date_taken!) as? UIImage
+            let description =  info.desription
+            let tag = info.tags
+            
+            detailVC.detailDescription = description
+            detailVC.detailImage = image
+            detailVC.detailTag = tag
+            
+            
+            
+            
+        default:
+            print("Error has occured")
+        
+        }
+    }
 
 }
 
@@ -74,7 +100,7 @@ extension FlickrTableViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("FlickrCell") as! FlickrTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.FlickrTableViewCellIdentifier) as! FlickrTableViewCell
         let cellInfo = flickrTableDataSource[indexPath.row]
         
         cell.cellInfo = cellInfo
@@ -87,7 +113,7 @@ extension FlickrTableViewController : UITableViewDataSource {
             cell.mainImageView?.image = img as? UIImage
         }
             
-            // set placeholder image , make network request then set image
+            // set placeholder image , make network request then set image in cache
         else {
             cell.mainImageView?.image = UIImage(named: "placeholder")
             

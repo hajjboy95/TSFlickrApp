@@ -18,6 +18,7 @@
 		EC12F2ED1C9AF7070049028B /* Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC12F2EC1C9AF7070049028B /* Flickr.swift */; };
 		EC1645F71C9C170A0017D652 /* FlickrTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1645F61C9C170A0017D652 /* FlickrTableViewCell.swift */; };
 		EC1AC3991C9D7BC4003E89F7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AC3981C9D7BC4003E89F7 /* Constants.swift */; };
+		ECE61C701C9D7CAF00DE1DE6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE61C6F1C9D7CAF00DE1DE6 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		EC12F2EC1C9AF7070049028B /* Flickr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
 		EC1645F61C9C170A0017D652 /* FlickrTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrTableViewCell.swift; sourceTree = "<group>"; };
 		EC1AC3981C9D7BC4003E89F7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		ECE61C6F1C9D7CAF00DE1DE6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				EC12F2E91C9AE55C0049028B /* FlickrTableViewController.swift */,
+				ECE61C6F1C9D7CAF00DE1DE6 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				EC12F2ED1C9AF7070049028B /* Flickr.swift in Sources */,
 				EC12F2E71C9AE53D0049028B /* FlickrApi.swift in Sources */,
 				EC1AC3991C9D7BC4003E89F7 /* Constants.swift in Sources */,
+				ECE61C701C9D7CAF00DE1DE6 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

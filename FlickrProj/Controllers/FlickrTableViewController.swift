@@ -67,9 +67,8 @@ class FlickrTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("Hello World")
         
-        print("Hello")
         switch segue.identifier ?? "" {
-        case "ToDetail":
+        case Constants.FlickrTableViewToDetailViewSegue:
             
             let detailVC  = segue.destinationViewController as! DetailViewController
             let indexPath = sender as! NSIndexPath

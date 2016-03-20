@@ -11,9 +11,12 @@ import XCTest
 
 class FlickrProjTests: XCTestCase {
     
+    var flickrDataArray:[Flickr]!
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        flickrDataArray = FlickrFactory(numberOfFlickrObjects: 10).createFlickrInstaces()
     }
     
     override func tearDown() {
@@ -21,9 +24,49 @@ class FlickrProjTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    
+    func testFlickrApi() {
+        
+        let flickrApi = FlickrApi()
+        let flickrData = flickrDataArray.first!
+        
+        let readyExpectation = expectationWithDescription("asyncFlickrCall")
+        
+        flickrApi.downloadFlickrImage(flickrData.media! ) { (image, error) -> Void in
+            
+            XCTAssertNil(error , "function should download  ")
+            XCTAssert(image! is UIImage )
+            
+            readyExpectation.fulfill()
+        }
+        waitForExpectationsWithTimeout(10) { (error) -> Void in
+            XCTAssertNil(error, "ERROR")
+        }
+    }
+    
+    func testFlickrFactory() {
+        
+        XCTAssert(flickrDataArray.count == 10)
+        let flickrDataFirst = flickrDataArray.first!
+        let flickrDataLast = flickrDataArray.last!
+        
+        let author = flickrDataFirst.author
+        let dateTakenForFirst = flickrDataFirst.date_taken
+        let dateTakenForLast  = flickrDataLast.date_taken
+        let media = flickrDataFirst.media
+        
+        
+        
+        XCTAssert(author == "nobody@flickr.com (Emile Kympers)")
+        XCTAssert(dateTakenForFirst == "2015-11-04T13:50:14-08:000")
+        XCTAssert(dateTakenForLast  == "2015-11-04T13:50:14-08:009")
+        
+        XCTAssert(media == "https://farm6.staticflickr.com/5659/22180553493_53acc2ac02_m.jpg")
+        
+        
+        
+        
     }
     
     func testPerformanceExample() {

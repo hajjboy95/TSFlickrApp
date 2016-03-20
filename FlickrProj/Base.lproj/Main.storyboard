@@ -97,7 +97,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Cxh-nP-XxQ" id="akA-uW-etZ"/>
-                        <segue destination="n1u-Le-wPx" kind="show" identifier="ToDetail" id="XfD-6b-aTm"/>
+                        <segue destination="n1u-Le-wPx" kind="show" identifier="ToDetail" id="tea-Xe-lFc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yaZ-Ns-Ygv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -123,13 +123,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gmn-BG-7hu">
-                                <rect key="frame" x="20" y="294" width="560" height="21"/>
+                                <rect key="frame" x="20" y="294" width="560" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3n-43-DUg">
-                                <rect key="frame" x="20" y="323" width="37" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3n-43-DUg">
+                                <rect key="frame" x="20" y="374" width="37" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tags:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZl-PT-Egt">
+                                <rect key="frame" x="20" y="335" width="41.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -141,8 +147,11 @@
                             <constraint firstItem="aP0-AB-zLe" firstAttribute="top" secondItem="Dna-P4-HLg" secondAttribute="bottom" constant="8" id="54j-o3-fpn"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Gmn-BG-7hu" secondAttribute="leading" id="6E9-L1-O6r"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Gmn-BG-7hu" secondAttribute="trailing" id="7Dr-UD-PSP"/>
-                            <constraint firstItem="Y3n-43-DUg" firstAttribute="top" secondItem="Gmn-BG-7hu" secondAttribute="bottom" constant="8" id="QG0-YO-EDV"/>
+                            <constraint firstItem="vZl-PT-Egt" firstAttribute="top" secondItem="Gmn-BG-7hu" secondAttribute="bottom" constant="20.5" id="F6V-tU-dzr"/>
+                            <constraint firstItem="vZl-PT-Egt" firstAttribute="leading" secondItem="LRV-tp-3Oa" secondAttribute="leadingMargin" id="Km3-zD-NhD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aP0-AB-zLe" secondAttribute="trailing" constant="-3" id="TvF-dn-LW8"/>
+                            <constraint firstItem="Y3n-43-DUg" firstAttribute="top" secondItem="vZl-PT-Egt" secondAttribute="bottom" constant="19" id="aWu-iy-08n"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Y3n-43-DUg" secondAttribute="trailing" id="gcm-dZ-4OK"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Y3n-43-DUg" secondAttribute="leading" id="t9y-xI-fJ1"/>
                             <constraint firstItem="Gmn-BG-7hu" firstAttribute="top" secondItem="aP0-AB-zLe" secondAttribute="bottom" constant="8" id="wws-OE-Cds"/>
                         </constraints>

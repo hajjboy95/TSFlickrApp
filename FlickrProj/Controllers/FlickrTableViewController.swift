@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FlickrTableViewController: UIViewController {
+class FlickrTableViewController: UITableViewController {
 
 
 
@@ -18,7 +18,7 @@ class FlickrTableViewController: UIViewController {
     var cache:NSCache!
     var task: NSURLSessionDownloadTask!
     var session: NSURLSession!
-    @IBOutlet var tableView: UITableView!
+//    @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,14 +65,16 @@ class FlickrTableViewController: UIViewController {
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("HELLO")
+        print("Hello World")
+        
+        print("Hello")
         switch segue.identifier ?? "" {
-        case Constants.FlickrTableViewToDetailViewSegue:
+        case "ToDetail":
             
             let detailVC  = segue.destinationViewController as! DetailViewController
-            let indexPath = tableView.indexPathForSelectedRow
+            let indexPath = sender as! NSIndexPath
             
-            let info = flickrTableDataSource[indexPath!.row]
+            let info = flickrTableDataSource[indexPath.row]
             let image = cache.objectForKey(info.date_taken!) as? UIImage
             let description =  info.desription
             let tag = info.tags
@@ -91,14 +93,23 @@ class FlickrTableViewController: UIViewController {
     }
 
 }
-
-extension FlickrTableViewController : UITableViewDataSource {
+extension FlickrTableViewController  {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("row selected \(indexPath.row)")
+        performSegueWithIdentifier("ToDetail", sender: indexPath)
+    
+        
+    }
+}
+
+extension FlickrTableViewController {
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return flickrTableDataSource.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.FlickrTableViewCellIdentifier) as! FlickrTableViewCell
         let cellInfo = flickrTableDataSource[indexPath.row]
@@ -116,6 +127,7 @@ extension FlickrTableViewController : UITableViewDataSource {
             // set placeholder image , make network request then set image in cache
         else {
             cell.mainImageView?.image = UIImage(named: "placeholder")
+            cell.userInteractionEnabled = false
             
             flickrApi.downloadFlickrImage(media! , completion: {  (image, error) -> Void in
                 
@@ -125,6 +137,8 @@ extension FlickrTableViewController : UITableViewDataSource {
                 } else {
                     let updateCell  = tableView.cellForRowAtIndexPath(indexPath) as? FlickrTableViewCell
                     updateCell?.mainImageView?.image = image
+                    cell.userInteractionEnabled = true
+
                     self.cache.setObject(image!, forKey: date_taken!)
                 }
             })
@@ -136,7 +150,7 @@ extension FlickrTableViewController : UITableViewDataSource {
         return cell
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     

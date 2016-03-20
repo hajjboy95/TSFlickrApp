@@ -9,9 +9,9 @@
 import UIKit
 
 class FlickrTableViewController: UITableViewController {
-
-
-
+    
+    
+    
     var flickrTableDataSource :[Flickr]!
     var flickrFactory:FlickrFactory!
     var flickrApi:FlickrApi!
@@ -22,23 +22,23 @@ class FlickrTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        
         
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 200.0; // set to whatever your "average" cell height is
-
+        
         
         intialiseObjects()
-
+        
         flickrTableDataSource =  flickrFactory.createFlickrInstaces()
         
-
+        
         flickrApi.getFlickrData { (dic, error) -> Void in
             
             if error != nil {
                 print("ERROR HAS OCCURED \(error)")
             } else {
-            
+                
                 print(dic)
             }
             
@@ -53,21 +53,21 @@ class FlickrTableViewController: UITableViewController {
         cache = NSCache()
         session = NSURLSession.sharedSession()
         task = NSURLSessionDownloadTask()
-
-
+        
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
-//    Isn't being automatically triggered from tableview
+    
+    //    Isn't being automatically triggered from tableview
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         switch segue.identifier ?? "" {
-        
+            
         case Constants.FlickrTableViewToDetailViewSegue:
             
             let detailVC  = segue.destinationViewController as! DetailViewController
@@ -87,10 +87,10 @@ class FlickrTableViewController: UITableViewController {
             
         default:
             print("Error has occured")
-        
+            
         }
     }
-
+    
 }
 
 //Extension to help with the PrepareForSegue
@@ -98,7 +98,7 @@ extension FlickrTableViewController  {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier(Constants.FlickrTableViewToDetailViewSegue, sender: indexPath)
-    
+        
         
     }
 }
@@ -109,17 +109,36 @@ extension FlickrTableViewController {
         return flickrTableDataSource.count
     }
     
+    
+    
+    
+    /**
+     This functoin displays the cells in the tableView .
+     
+     Checks if the image is present in the NSCache variable first.
+     the key is the dataTaken varaible . if present dontbmake a netweok request and display the 
+     image within the cache 
+     
+     if its not present in the cache call the flickr api object to download the image with the given
+     url and update the ui when the image is recieved .
+     
+     as the image is being downlaoded from the server the user cannot click into the cell and a 
+     placeholder is displayed in the meantime
+     
+     
+     
+     */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.FlickrTableViewCellIdentifier) as! FlickrTableViewCell
         let cellInfo = flickrTableDataSource[indexPath.row]
         
         cell.cellInfo = cellInfo
-    
+        
         let date_taken = cellInfo.date_taken
         let media = cellInfo.media
-
-            // check if the image is already present in the cache
+        
+        // check if the image is already present in the cache
         if let img = cache.objectForKey(date_taken!) {
             cell.mainImageView?.image = img as? UIImage
         }
@@ -138,7 +157,7 @@ extension FlickrTableViewController {
                     let updateCell  = tableView.cellForRowAtIndexPath(indexPath) as? FlickrTableViewCell
                     updateCell?.mainImageView?.image = image
                     cell.userInteractionEnabled = true
-
+                    
                     self.cache.setObject(image!, forKey: date_taken!)
                 }
             })

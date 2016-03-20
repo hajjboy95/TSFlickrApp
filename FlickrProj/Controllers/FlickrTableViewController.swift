@@ -18,7 +18,6 @@ class FlickrTableViewController: UITableViewController {
     var cache:NSCache!
     var task: NSURLSessionDownloadTask!
     var session: NSURLSession!
-//    @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,10 +63,11 @@ class FlickrTableViewController: UITableViewController {
     }
 
     
+//    Isn't being automatically triggered from tableview
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("Hello World")
         
         switch segue.identifier ?? "" {
+        
         case Constants.FlickrTableViewToDetailViewSegue:
             
             let detailVC  = segue.destinationViewController as! DetailViewController
@@ -92,11 +92,12 @@ class FlickrTableViewController: UITableViewController {
     }
 
 }
+
+//Extension to help with the PrepareForSegue
 extension FlickrTableViewController  {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("row selected \(indexPath.row)")
-        performSegueWithIdentifier("ToDetail", sender: indexPath)
+        performSegueWithIdentifier(Constants.FlickrTableViewToDetailViewSegue, sender: indexPath)
     
         
     }
@@ -141,10 +142,7 @@ extension FlickrTableViewController {
                     self.cache.setObject(image!, forKey: date_taken!)
                 }
             })
-            
         }
-
-        
         
         return cell
     }
